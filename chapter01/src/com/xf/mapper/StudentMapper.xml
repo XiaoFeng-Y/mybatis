@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="student">
+	<select id="listStudent" parameterType="Integer"
+		resultType="com.xf.pojo.Student">
+		select * from student
+	</select>
+	<select id="findById" parameterType="Integer"
+		resultType="com.xf.pojo.Student">
+		select * from student where sid = #{sid}
+	</select>
+	<select id="findStudentByName" parameterType="String"  
+		resultType="com.xf.pojo.Student">  
+		select * from student where sname like '%${value}%' 
+	</select> 
+	<insert id="addStudent" parameterType="com.xf.pojo.Student" >  
+		insert into student(sname,age,course)values(#{sname},#{age},#{course}) 
+	</insert>
+	<update id="updateStudent" parameterType="com.xf.pojo.Student" >  
+	update student set sname =#{sname},course = #{course} where sid = #{sid} 
+	</update> 
+	<delete id="deleteStudent" parameterType="Integer">  
+	delete from  student where sid=#{sid} 
+	</delete> 
+</mapper>
